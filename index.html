@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div id="app" class="container">
+      <div class="row">
+        <div class="col-12">
+          <h1 v-if="error">
+            Nos desculpe, não foi possivel encontrar os dados no momento, por
+            favor, nos comunique e o mais rapido possivel solucionaremos o caso.
+          </h1>
+          <table class="table" v-else>
+            <thead class="thead-light">
+              <tr>
+                <th>Dia</th>
+                <th>Funcionário</th>
+                <th>Entrada</th>
+                <th>Início da Pausa</th>
+                <th>Retorno da Pausa</th>
+                <th>Saída</th>
+                <th>Horas Trabalhadas</th>
+                <th>Horas de Pausa</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="day in days">
+                <td>{{ day.day | formatDate }}</td>
+                <td>{{ day.employee.name }}</td>
+                <td v-for="ponto in day.pontos">
+                  {{ ponto.time | formatHour }}
+                </td>
+                <td>{{ day.hourWork }}</td>
+                <td>{{ day.hourPause }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="assets/js/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"></script>
+    <script src="https://momentjs.com/downloads/moment-with-locales.min.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
