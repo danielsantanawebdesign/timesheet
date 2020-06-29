@@ -1,2 +1,2 @@
 # pontotelproject
-Projeto de folha de ponto para a empresa PontoTel
+Consumindo uma API e exibindo uma folha de Ponto
